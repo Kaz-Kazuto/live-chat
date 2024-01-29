@@ -17,7 +17,7 @@ body{
     font-size: 14px;
 }
 
-.button{
+button{
     text-decoration: none;
     background: #5ae4ca;
     color: white;
