@@ -10,26 +10,17 @@
 
 <script>
 import { ref } from 'vue'
-import { auth } from '@/firebase/config'
-import { createUserWithEmailAndPassword, signWithEmailAndPassword, signOut } from 'firebase/auth'
+import UseSignUp from "../composable/UseSignup"
 export default {
     setup(){
         let displayName=ref("");
         let email = ref("");
         let password = ref ("");
-        let error = ref("");
+
+        let {error,createAccount}=UseSignUp();
 
      let SignUp=async()=>{
-         try{
-            const result = await createUserWithEmailAndPassword(auth, email.value,password.value)
-            if(!result){
-                throw new Error("Could not create User")
-            }
-            console.log(result.user)
-        }catch(err){
-            error.value=err.message
-            console.log(error.value)
-        }
+          let result = await createAccount(email.value,password.value,displayName.value)
          }
         
 
