@@ -13,7 +13,7 @@
 import { ref } from 'vue'
 import UseSignUp from "../composable/UseSignup"
 export default {
-    setup(){
+    setup(props,context){
         let displayName=ref("");
         let email = ref("");
         let password = ref ("");
@@ -22,10 +22,13 @@ export default {
 
      let SignUp=async()=>{
           let result = await createAccount(email.value,password.value,displayName.value)
-         }
+          if(result){
+            context.emit("enterChatroom")
+          }
+          }
         
 
-        return{displayName,email,password, SignUp,error}
+        return {displayName,email,password, SignUp,error}
     }
 }
 </script>

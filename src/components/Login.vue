@@ -16,20 +16,20 @@ import { auth } from '@/firebase/config';
 import useLogin from '../composable/useLogin.js'
   export default {
   components: { SingUp },
-      setup(){
+      setup(props,context){
           let email = ref("");
           let password = ref ("");
           
-          let {error,sigin} = useLogin()
+          let {error,sigIn} = useLogin()
   
-       let login=async()=>{
-            let res = await sigin(email.value,password.value)
-            if(res){
-              alert("Complete")
-            }
+        let login=()=>{
+          let result = sigIn(email.value,password.value)
+          if(result){
+            context.emit("enterChatroom")
           }
+        }
   
-          return{email,password, login ,error}
+          return {email,password, login ,error}
       }
   }
   </script>

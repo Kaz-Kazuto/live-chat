@@ -11,7 +11,7 @@ let createAccount=async(email,password,displayname)=>{
                 throw new Error("Could not create User")
             }
             result.user.displayName=displayname
-            console.log(result.user)
+            return result
         }catch(err){
             error.value=err.message
             console.log(error.value)
