@@ -4,6 +4,7 @@
     <input type="text" placeholder="Display Name" v-model="displayName">
     <input type="email" placeholder="Enter Email" v-model="email">
     <input type="password" placeholder="Enter Password" v-model="password">
+    <div class="error" v-if="error">{{ error }}</div>
     <button>Sign Up</button>
   </form>
 </template>
@@ -24,7 +25,7 @@ export default {
          }
         
 
-        return{displayName,email,password, SignUp}
+        return{displayName,email,password, SignUp,error}
     }
 }
 </script>
