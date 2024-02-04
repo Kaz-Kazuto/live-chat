@@ -19,12 +19,13 @@ import useLogin from '../composable/useLogin.js'
       setup(props,context){
           let email = ref("");
           let password = ref ("");
-          
+          let displayName = ref(auth.currentUser)          
           let {error,sigIn} = useLogin()
   
-        let login=()=>{
-          let result = sigIn(email.value,password.value)
+        let login=async()=>{
+          let result = await sigIn(email.value,password.value)
           if(result){
+            displayName = result.displayName
             context.emit("enterChatroom")
           }
         }

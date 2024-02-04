@@ -10,10 +10,11 @@ let sigIn=async(email,password)=>{
         if(!result){
           throw new Error("Wrong Username and Password")
         }
+        console.log(result)
         return result;
        }catch(err){
           error.value=err.message
-          console.log(error.value)
+          console.log(error.message)
        }
        
 }

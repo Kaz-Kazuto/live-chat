@@ -26,6 +26,7 @@ export default {
             context.emit("enterChatroom")
           }
           }
+         
         
 
         return {displayName,email,password, SignUp,error}
