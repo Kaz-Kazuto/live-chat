@@ -1,23 +1,23 @@
-import { auth } from '@/firebase/config'
-import router from '@/router'
-import { signOut } from 'firebase/auth'
-import { ref } from 'vue'
+import { auth } from "@/firebase/config";
+import router from "@/router";
+import { signOut } from "firebase/auth";
+import { ref } from "vue";
 
+let error = ref(null);
 
-let error= ref(null)
+let logOut = async () => {
+  try {
+    await auth.signOut();
 
-let logOut=async()=>{
-    try{
-        await auth.signOut()
-        router.push("/")
-    }catch(err){
-        error.value=err.message
-        console.log(error.value)  
-    }
-}
+    router.push("/");
+  } catch (err) {
+    error.value = err.message;
+    console.log(error.value);
+  }
+};
 
-let Logout=()=>{
-    return {error, logOut}
-}
+let Logout = () => {
+  return { error, logOut };
+};
 
-export default Logout
+export default Logout;
